@@ -1,4 +1,4 @@
-package com.example.ihomebyme.db
+package com.example.ihomebyme.db.dao
 
 import androidx.room.Dao
 
