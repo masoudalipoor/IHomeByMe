@@ -1,4 +1,4 @@
-package com.example.ihomebyme.fragment.found
+package com.example.ihomebyme.fragment.fund
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

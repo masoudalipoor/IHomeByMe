@@ -2,12 +2,10 @@ package com.example.ihomebyme.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import com.example.ihomebyme.R
-import com.example.ihomebyme.db.HomeByMeDatabase
 import com.example.ihomebyme.fragment.charge.ChargeFragment
-import com.example.ihomebyme.fragment.found.FoundFragment
+import com.example.ihomebyme.fragment.fund.FoundFragment
 import com.example.ihomebyme.fragment.projects.ProjectFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -54,7 +52,6 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
-
     }
 
     private fun switchToFragment() {
