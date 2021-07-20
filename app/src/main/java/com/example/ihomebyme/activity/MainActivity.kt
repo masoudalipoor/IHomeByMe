@@ -3,15 +3,64 @@ package com.example.ihomebyme.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
 import com.example.ihomebyme.R
 import com.example.ihomebyme.db.HomeByMeDatabase
+import com.example.ihomebyme.fragment.charge.ChargeFragment
+import com.example.ihomebyme.fragment.found.FoundFragment
+import com.example.ihomebyme.fragment.projects.ProjectFragment
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+    private var fragment: Fragment? = null
+
+    private val initSupportFragmentManager by lazy {
+        fragment = supportFragmentManager.findFragmentById(R.id.container)
+    }
+
+    private val startFirstFragment by lazy {
+        bottomNavigation.selectedItemId = R.id.itemProject
+        fragment = ProjectFragment()
+        switchToFragment()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        HomeByMeDatabase.getDatabase(this)
+        initSupportFragmentManager
+        startFirstFragment
 
+
+        bottomNavigation.setOnNavigationItemSelectedListener {
+
+            when (it.itemId) {
+                R.id.itemFund -> {
+                    fragment = FoundFragment()
+                    switchToFragment()
+                    true
+                }
+                R.id.itemProject -> {
+                    fragment = ProjectFragment()
+                    switchToFragment()
+                    true
+                }
+                R.id.itemCharge -> {
+                    fragment = ChargeFragment()
+                    switchToFragment()
+                    true
+                }
+                else -> false
+            }
+        }
+
+    }
+
+    private fun switchToFragment() {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.container, fragment!!)
+            .commit()
     }
 }

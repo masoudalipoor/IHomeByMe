@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/itemCharge"
+        android:icon="@mipmap/ic_launcher"
+        android:title="مخارج" />
+
+    <item
+        android:id="@+id/itemProject"
+        android:icon="@mipmap/ic_launcher"
+        android:title="پروژه های من" />
+
+    <item
+        android:id="@+id/itemFund"
+        android:icon="@mipmap/ic_launcher"
+        android:title="سرمایه گذار" />
+
+</menu>
