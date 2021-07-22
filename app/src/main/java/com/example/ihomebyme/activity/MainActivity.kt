@@ -7,8 +7,10 @@ import com.example.ihomebyme.R
 import com.example.ihomebyme.fragment.charge.ChargeFragment
 import com.example.ihomebyme.fragment.fund.FoundFragment
 import com.example.ihomebyme.fragment.projects.ProjectFragment
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private var fragment: Fragment? = null
@@ -29,6 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         initSupportFragmentManager
         startFirstFragment
+
 
 
         bottomNavigation.setOnNavigationItemSelectedListener {

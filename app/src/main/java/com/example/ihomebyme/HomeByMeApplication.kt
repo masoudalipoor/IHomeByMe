@@ -8,14 +8,14 @@ import dagger.hilt.android.HiltAndroidApp
 @HiltAndroidApp
 class HomeByMeApplication : Application() {
 
-    companion object {
-        lateinit var context: Context
-    }
+//    companion object {
+//        lateinit var context: Context
+//    }
 
     override fun onCreate() {
         super.onCreate()
 
-        context = applicationContext
+//        context = applicationContext
 
     }
 }
