@@ -3,6 +3,7 @@ package com.example.ihomebyme.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
 import com.example.ihomebyme.R
 import com.example.ihomebyme.fragment.charge.ChargeFragment
 import com.example.ihomebyme.fragment.fund.FoundFragment
@@ -32,8 +33,6 @@ class MainActivity : AppCompatActivity() {
         initSupportFragmentManager
         startFirstFragment
 
-
-
         bottomNavigation.setOnNavigationItemSelectedListener {
 
             when (it.itemId) {
@@ -58,9 +57,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun switchToFragment() {
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.container, fragment!!)
-            .commit()
+        supportFragmentManager.commit {
+            replace(R.id.container, fragment!!)
+        }
     }
 }

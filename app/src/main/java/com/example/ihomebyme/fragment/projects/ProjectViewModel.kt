@@ -1,17 +1,19 @@
 package com.example.ihomebyme.fragment.projects
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.ihomebyme.db.dao.ProjectDao
 import com.example.ihomebyme.db.entity.ProjectEntity
 import kotlinx.coroutines.launch
 
 //@HiltViewModel
-class ProjectViewModel : ViewModel() {
+class ProjectViewModel @ViewModelInject constructor(
+    var projectDao: ProjectDao
+) : ViewModel() {
 
-//    @Inject
-//    lateinit var projectDao: ProjectDao
 
     fun insertProject(projectEntity: ProjectEntity) = viewModelScope.launch {
-//        projectDao.insert(projectEntity)
+        projectDao.insert(projectEntity)
     }
 }

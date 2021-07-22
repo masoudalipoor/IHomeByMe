@@ -19,7 +19,7 @@ class DatabaseModule {
     @Singleton
     @Provides
     fun provideDatabase(@ApplicationContext context: Context) =
-        HomeByMeDatabase.getDatabase(context)
+        Room.databaseBuilder(context, HomeByMeDatabase::class.java, "homebyme").build()
 
 
     @Provides
