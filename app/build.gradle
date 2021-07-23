@@ -7,6 +7,12 @@ plugins {
 }
 
 android {
+
+    dataBinding {
+        enabled = true
+    }
+
+
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
@@ -54,6 +60,7 @@ dependencies {
 
     //lifecycle
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1" //{viewModelScope.launch}
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
 //    implementation "androidx.activity:activity-ktx:1.2.4"
 
     //room

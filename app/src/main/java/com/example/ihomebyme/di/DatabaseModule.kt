@@ -15,7 +15,6 @@ import javax.inject.Singleton
 @InstallIn(ApplicationComponent::class)
 class DatabaseModule {
 
-
     @Singleton
     @Provides
     fun provideDatabase(@ApplicationContext context: Context) =
@@ -25,4 +24,8 @@ class DatabaseModule {
     @Provides
     fun provide(db: HomeByMeDatabase): ProjectDao =
         db.projectDao()
+
+//    @Provides
+//    fun provideFundDao(db: HomeByMeDatabase): FundDao =
+//        db.fundDao()
 }

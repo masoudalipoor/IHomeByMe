@@ -9,4 +9,5 @@ import com.example.ihomebyme.db.entity.ProjectEntity
 abstract class HomeByMeDatabase : RoomDatabase() {
 
     abstract fun projectDao(): ProjectDao
+//    abstract fun fundDao(): FundDao
 }
