@@ -1,9 +1,9 @@
 package com.example.ihomebyme.fragment.projects
 
-import android.util.Log
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.example.ihomebyme.db.dao.ProjectDao
 import com.example.ihomebyme.db.entity.ProjectEntity
@@ -14,9 +14,10 @@ class ProjectViewModel @ViewModelInject constructor(
     private var projectDao: ProjectDao
 ) : ViewModel() {
 
-    init {
-        Log.e("ProjectViewModel >>>> ", " init ")
-    }
+//    val getProjects: LiveData<List<ProjectEntity>> = liveData {
+//        val s = projectDao.getAllProjects()
+//        emit(s)
+//    }
 
     val getProjects: LiveData<List<ProjectEntity>> = projectDao.getAllProjects()
 

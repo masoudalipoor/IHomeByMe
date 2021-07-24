@@ -3,6 +3,7 @@ package com.example.ihomebyme.di
 import android.content.Context
 import androidx.room.Room
 import com.example.ihomebyme.db.HomeByMeDatabase
+import com.example.ihomebyme.db.dao.FundDao
 import com.example.ihomebyme.db.dao.ProjectDao
 import dagger.Module
 import dagger.Provides
@@ -25,7 +26,7 @@ class DatabaseModule {
     fun provide(db: HomeByMeDatabase): ProjectDao =
         db.projectDao()
 
-//    @Provides
-//    fun provideFundDao(db: HomeByMeDatabase): FundDao =
-//        db.fundDao()
+    @Provides
+    fun provideFundDao(db: HomeByMeDatabase): FundDao =
+        db.fundDao()
 }

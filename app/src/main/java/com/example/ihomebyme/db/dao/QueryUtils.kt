@@ -11,6 +11,8 @@ object QueryUtils {
     /**
      * funder
      */
+    const val TABLE_FUND = "funds"
+    const val QUERY_GET_ALL_FUND = "SELECT * FROM $TABLE_FUND"
 
 
 }
