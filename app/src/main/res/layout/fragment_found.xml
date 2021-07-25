@@ -12,13 +12,13 @@
         android:layout_height="wrap_content"
         android:hint="name" />
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/fundPayEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:hint="pay"
-        app:layout_constraintTop_toBottomOf="@+id/fundNameEditText" />
+<!--    <androidx.appcompat.widget.AppCompatEditText-->
+<!--        android:id="@+id/fundPayEditText"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="25dp"-->
+<!--        android:hint="pay"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/fundNameEditText" />-->
 
     <Button
         android:id="@+id/addFundButton"
@@ -27,7 +27,7 @@
         android:text="addFund"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fundPayEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/fundNameEditText" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fundRecyclerView"

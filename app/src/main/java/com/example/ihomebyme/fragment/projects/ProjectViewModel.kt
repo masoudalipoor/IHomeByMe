@@ -1,12 +1,14 @@
 package com.example.ihomebyme.fragment.projects
 
+import android.util.Log
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.example.ihomebyme.db.dao.ProjectDao
 import com.example.ihomebyme.db.entity.ProjectEntity
+import dagger.hilt.android.scopes.ActivityRetainedScoped
 import kotlinx.coroutines.launch
 
 //@HiltViewModel
@@ -14,10 +16,9 @@ class ProjectViewModel @ViewModelInject constructor(
     private var projectDao: ProjectDao
 ) : ViewModel() {
 
-//    val getProjects: LiveData<List<ProjectEntity>> = liveData {
-//        val s = projectDao.getAllProjects()
-//        emit(s)
-//    }
+    init {
+        Log.e("ProjectViewModel", "Call")
+    }
 
     val getProjects: LiveData<List<ProjectEntity>> = projectDao.getAllProjects()
 

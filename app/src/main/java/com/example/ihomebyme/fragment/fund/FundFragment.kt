@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ihomebyme.R
 import com.example.ihomebyme.adapter.FundAdapter
+import com.example.ihomebyme.db.dao.FundDao
 import com.example.ihomebyme.db.entity.FundEntity
 import com.example.ihomebyme.fragment.getViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -16,30 +17,36 @@ import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_found.*
 import java.lang.IllegalArgumentException
+import javax.inject.Inject
 
 @AndroidEntryPoint
-class FoundFragment : Fragment(R.layout.fragment_found) {
+class FoundFragment : Fragment(R.layout.fragment_found), FundAdapter.CellClickListener {
 
-    private val cache: Boolean = true
-    private val expire: Boolean = false
+    private var fundadapter: FundAdapter? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val viewmodel = getViewModel<FundViewModel>()
 
+
+
         with(viewmodel) {
 
             addFundButton.setOnClickListener {
-                insertFund(FundEntity(fundNameEditText.text.toString(),
-                    fundPayEditText.text.toString().toDouble()))
+                insertFund(FundEntity(fundNameEditText.text.toString(), 0))
             }
 
             allFund.observe(viewLifecycleOwner) { funds ->
                 fundRecyclerView.layoutManager = LinearLayoutManager(context)
-                fundRecyclerView.adapter = FundAdapter(funds, context)
-            }
+                fundadapter = FundAdapter(funds, context, this@FoundFragment)
+                fundRecyclerView.adapter = fundadapter
 
+            }
         }
+    }
+
+    override fun onCellClickListener(data: FundEntity) {
+
     }
 
 

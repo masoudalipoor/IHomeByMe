@@ -13,6 +13,7 @@ object QueryUtils {
      */
     const val TABLE_FUND = "funds"
     const val QUERY_GET_ALL_FUND = "SELECT * FROM $TABLE_FUND"
+    const val QUERY_UPDATE_FUND = "Update $TABLE_FUND set fundPay=:extraMony Where fundName=:name"
 
 
 }

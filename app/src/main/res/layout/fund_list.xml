@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/topRl"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
+    android:layout_height="wrap_content"
     android:layout_margin="15dp"
     android:background="@color/item">
 
@@ -10,11 +11,11 @@
         android:id="@+id/fundNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="5dp"
         android:text="مسعود"
         android:textColor="@color/black"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,19 +24,54 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="3243"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/fundNameTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/fundNameTextView" />
 
     <TextView
         android:id="@+id/addExtraPayTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:text="بیشتر میخوام پول بریزم"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="بیشتر"
+        app:layout_constraintBottom_toBottomOf="@+id/fundPayTextView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/fundPayTextView" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/addNewInfoRl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/item"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/fundNameTextView">
+
+        <EditText
+            android:id="@+id/fundPayEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/confirmNewInfoButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:text="تایید"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fundPayEditText" />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:text="پروژه یک"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fundPayEditText" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

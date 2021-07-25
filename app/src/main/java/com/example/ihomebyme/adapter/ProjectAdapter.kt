@@ -9,13 +9,25 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ihomebyme.R
 import com.example.ihomebyme.db.dao.ProjectDao
 import com.example.ihomebyme.db.entity.ProjectEntity
+import dagger.hilt.android.qualifiers.ActivityContext
+import dagger.hilt.android.scopes.FragmentScoped
 import kotlinx.android.synthetic.main.projects_list.view.*
+import javax.inject.Inject
 
-class ProjectAdapter constructor(
-    private var context: Context?,
-    private var listOfProjects: List<ProjectEntity>?
-) : RecyclerView.Adapter<ProjectAdapter.ViewHolderProject>() {
+@FragmentScoped
+class ProjectAdapter @Inject constructor() :
+    RecyclerView.Adapter<ProjectAdapter.ViewHolderProject>() {
 
+    var context: Context? = null
+    var listOfProjects: List<ProjectEntity>? = null
+
+    fun ownerContext(@ActivityContext context: Context) {
+        this.context = context
+    }
+
+    fun initListOfProjects(listOfProjects: List<ProjectEntity>) {
+        this.listOfProjects = listOfProjects
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderProject =
         ViewHolderProject(
@@ -27,7 +39,7 @@ class ProjectAdapter constructor(
         val project: ProjectEntity = listOfProjects!![position]
 
         with(holder) {
-            nameProject.text =  project.projectName
+            nameProject.text = project.projectName
         }
 
 //        project.let { listOfProjects?.get(position) }
@@ -39,7 +51,7 @@ class ProjectAdapter constructor(
 
     override fun getItemCount(): Int = listOfProjects?.size!!
 
-    class ViewHolderProject(view: View) : RecyclerView.ViewHolder(view) {
+    inner class ViewHolderProject(view: View) : RecyclerView.ViewHolder(view) {
 
         val nameProject = view.showProjectNameTxtView
         val removeItem = view.removeItemImageView

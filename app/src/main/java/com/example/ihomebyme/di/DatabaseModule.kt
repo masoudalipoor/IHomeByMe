@@ -8,18 +8,21 @@ import com.example.ihomebyme.db.dao.ProjectDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityRetainedComponent
 import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.android.scopes.ActivityRetainedScoped
 import javax.inject.Singleton
 
 @Module
 @InstallIn(ApplicationComponent::class)
-class DatabaseModule {
+object DatabaseModule {
 
     @Singleton
     @Provides
     fun provideDatabase(@ApplicationContext context: Context) =
         Room.databaseBuilder(context, HomeByMeDatabase::class.java, "homebyme").build()
+
 
 
     @Provides

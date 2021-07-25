@@ -12,3 +12,8 @@ inline fun <reified R : ViewModel> Fragment.getViewModel() =
      ViewModelProviders.of(this).get(R::class.java)
 
 
+inline fun <reified R : ViewModel> view() = getview<R>()
+
+inline fun <reified R > getview() =
+     R::class.java
+
