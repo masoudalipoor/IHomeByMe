@@ -22,11 +22,15 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class FundAdapter @Inject constructor(
-    private var listOfFundMember: List<FundEntity>,
-    private var context: Context?,
-    private val cellClickListener: CellClickListener
+//    private var listOfFundMember: List<FundEntity>,
+//    private var context: Context?,
+//    private val cellClickListener: CellClickListener
 ) :
     RecyclerView.Adapter<FundAdapter.ViewHolderFund>() {
+
+    private var listOfFundMember: List<FundEntity>? = null
+    private var context: Context? = null
+    private val cellClickListener: CellClickListener?= null
 
     var onItemClick: ((FundEntity) -> Unit)? = null
 
@@ -34,7 +38,7 @@ class FundAdapter @Inject constructor(
         ViewHolderFund(LayoutInflater.from(context).inflate(R.layout.fund_list, parent, false))
 
     override fun onBindViewHolder(holder: FundAdapter.ViewHolderFund, position: Int) {
-        val fund: FundEntity = listOfFundMember[position]
+        val fund: FundEntity = listOfFundMember!![position]
 
         with(holder) {
             name.text = fund.fundName
@@ -42,7 +46,7 @@ class FundAdapter @Inject constructor(
         }
     }
 
-    override fun getItemCount(): Int = listOfFundMember.size
+    override fun getItemCount(): Int = listOfFundMember!!.size
 
     inner class ViewHolderFund(view: View) : RecyclerView.ViewHolder(view) {
         val name = view.fundNameTextView
