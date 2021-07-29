@@ -22,7 +22,10 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class FoundFragment : Fragment(R.layout.fragment_found), FundAdapter.CellClickListener {
 
-    private var fundadapter: FundAdapter? = null
+//    private var fundadapter: FundAdapter? = null
+
+    @Inject
+    lateinit var fundAdapter: FundAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -38,8 +41,8 @@ class FoundFragment : Fragment(R.layout.fragment_found), FundAdapter.CellClickLi
 
             allFund.observe(viewLifecycleOwner) { funds ->
                 fundRecyclerView.layoutManager = LinearLayoutManager(context)
-                fundadapter = FundAdapter(funds, context, this@FoundFragment)
-                fundRecyclerView.adapter = fundadapter
+                fundAdapter = FundAdapter()
+                fundRecyclerView.adapter = fundAdapter
 
             }
         }
