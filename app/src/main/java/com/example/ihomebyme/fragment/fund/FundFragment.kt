@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Toast
+import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ihomebyme.R
 import com.example.ihomebyme.adapter.FundAdapter
@@ -26,24 +27,23 @@ class FoundFragment : Fragment(R.layout.fragment_found), FundAdapter.CellClickLi
 
     @Inject
     lateinit var fundAdapter: FundAdapter
+    private var viewModel : FundViewModel? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val viewmodel = getViewModel<FundViewModel>()
+        viewModel = getViewModel<FundViewModel>()
 
 
-
-        with(viewmodel) {
+        with(viewModel) {
 
             addFundButton.setOnClickListener {
-                insertFund(FundEntity(fundNameEditText.text.toString(), 0))
+                this?.insertFund(FundEntity(fundNameEditText.text.toString(), 0))
             }
 
-            allFund.observe(viewLifecycleOwner) { funds ->
+            this?.allFund?.observe(viewLifecycleOwner) { funds ->
                 fundRecyclerView.layoutManager = LinearLayoutManager(context)
                 fundAdapter = FundAdapter()
                 fundRecyclerView.adapter = fundAdapter
-
             }
         }
     }
@@ -52,6 +52,10 @@ class FoundFragment : Fragment(R.layout.fragment_found), FundAdapter.CellClickLi
 
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+
+    }
 
 }
 
