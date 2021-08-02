@@ -13,7 +13,7 @@ interface FundDao {
     suspend fun insertFund(funds: FundEntity)
 
     @Query(QueryUtils.QUERY_GET_ALL_FUND)
-    fun getAllFunds(): LiveData<List<FundEntity>>
+    fun getAllFunds(): LiveData<List<FundEntity>> 
 
     @Query(QueryUtils.QUERY_UPDATE_FUND)
     suspend fun insertNewDataToFundPerson(extraMony: Long, name: String)
