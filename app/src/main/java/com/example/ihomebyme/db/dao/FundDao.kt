@@ -10,11 +10,11 @@ import io.reactivex.rxjava3.core.Completable
 interface FundDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertFund(funds: FundEntity) 
+    suspend fun insertFund(funds: FundEntity)
 
     @Query(QueryUtils.QUERY_GET_ALL_FUND)
     fun getAllFunds(): LiveData<List<FundEntity>> 
 
     @Query(QueryUtils.QUERY_UPDATE_FUND)
-    suspend fun insertNewDataToFundPerson(extraMony: Long, name: String)
+    suspend fun insertNewDataToFundPerson(extraMony: Long, name: String) 
 }
