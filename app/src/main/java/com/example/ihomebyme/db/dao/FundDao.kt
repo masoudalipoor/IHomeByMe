@@ -12,7 +12,7 @@ interface FundDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertFund(funds: FundEntity)
 
-    @Query(QueryUtils.QUERY_GET_ALL_FUND)
+    @Query(QueryUtils.QUERY_GET_ALL_FUND) 
     fun getAllFunds(): LiveData<List<FundEntity>> 
 
     @Query(QueryUtils.QUERY_UPDATE_FUND)
