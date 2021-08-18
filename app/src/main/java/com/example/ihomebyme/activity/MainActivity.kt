@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         fragment = supportFragmentManager.findFragmentById(R.id.container)
     }
 
-    private val startFirstFragment by lazy {
+    private val startFirstFragment by lazy { 
         bottomNavigation.selectedItemId = R.id.itemProject
         fragment = ProjectFragment()
         switchToFragment()
